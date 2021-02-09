@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <title>TIC TAK TOE</title>
+    <body>
+        <div>
+            <h1>TIC TAC TOE</h1>
+        </div>
+        <div>
+            <table id="table" border="1">
+                <tr>
+                    <td id="00"> &emsp;&emsp;&emsp;</td>
+                    <td id="01"> &emsp;&emsp;&emsp;</td>
+                    <td id="02"> &emsp;&emsp;&emsp;</td>
+                </tr>
+                
+                <tr>
+                    <td id="10"> &emsp;&emsp;&emsp;</td>
+                    <td id="11"> &emsp;&emsp;&emsp;</td>
+                    <td id="12"> &emsp;&emsp;&emsp;</td>
+                </tr>
+                
+                <tr>
+                    <td id="20"> &emsp;&emsp;&emsp;</td>
+                    <td id="21"> &emsp;&emsp;&emsp;</td>
+                    <td id="22"> &emsp;&emsp;&emsp;</td>
+                </tr>
+            </table>
+            <script>
+                var person=0;
+                X=-1
+                Y=-1
+                function changeperson() {
+                    var q = X.toString() + Y.toString();
+                    if (person == 0) {
+                        document.getElementById(q).style.backgroundColor = "#00ff00";
+                        person = 1;
+
+                        
+                    }
+                    else {
+                        document.getElementById(q).style.backgroundColor = "#ff0000";
+                        person = 0;
+                        
+                    }
+                }
+
+                function checking(){
+                    xx=0;
+                    yy=0;
+                    xxx=0;
+                    yyy=0;
+                    xd=0;
+                    yd=0;
+                    for(let x=0;x<3;x++){
+                        if(arr[x][Y]==0 ){
+                            xx=xx+1;
+                        }    
+                        
+                    }
+                    for(let y=0;y<3;y++){
+                        if(arr[X][y]==0 ){
+                            yy=yy+1;
+                        }
+                    }
+                    for(let x=0;x<3;x++){
+                        for(let y=0;y<3;y++){
+                            if(x==y){
+                                if(arr[x][j]==0){
+                                    xd=xd+1;
+                                }
+                                if(arr[x][j]==1){
+                                    yd=yd+1;
+                                }    
+                            }
+                        }
+                    }
+
+                    for(let x=0;x<3;x++){
+                        if(arr[x][Y]==1 ){
+                            xxx=xxx+1;
+                        }    
+                        
+                    }
+                    for(let y=0;y<3;y++){
+                        if( arr[X][y]==1){
+                            yyy=yyy+1;
+                        }
+                    }
+                    for(let x=0;x<3;x++){
+                        for(let y=0;y<3;y++){
+                        if(arr[x][j]==1 && x==y){
+                            yd=yd+1;
+                        }}
+                    }
+                    if(xx==3 || yy==3 || xd==3){
+                        console.log("xx=",xx,"yy=",yy);
+                        alert("Person 1 is Winner");
+                    }
+                    if(xxx==3 || yyy==3 || yd==3){
+                        console.log("xx=",xx,"yy=",yy);
+                        alert("Person 2 is Winner");
+                    }
+                    
+                }
+                var arr=[[-1,-1,-1],[-1,-1,-1],[-1,-1,-1]];
+                var table = document.getElementById("table"),rIndex,cIndex;
+                      for(var i = 0; i < table.rows.length; i++)
+                      {
+                          for(var j = 0; j < table.rows[i].cells.length; j++)
+                          {
+                              table.rows[i].cells[j].onclick = function()
+                              {
+                                  rIndex = this.parentElement.rowIndex;
+                                  X=rIndex;
+                                  cIndex = this.cellIndex+1;
+                                  Y=cIndex-1;
+                                  arr[rIndex][cIndex-1]=person;
+                                  changeperson();
+                                  checking();
+                                  console.log("Row : "+rIndex+" , Cell : "+cIndex);
+                                  console.log(arr);
+                              };
+                          }
+                      }
+          </script>
+        </div>
+    </body>
+</html>
+
+
+<style>
+    body{
+        background-image: url("https://images.pexels.com/photos/3391752/pexels-photo-3391752.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        text-align: center;
+        color: chartreuse;
+    }
+    
+    table {
+        border-radius: 6px;
+        left: 100px;
+        text-align: center;
+        border: 3px solid rgb(253, 253, 234);
+        size: 5;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+        color: honeydew;
+        background-color: black;
+        width: 500px;
+        height: 500px;
+    }
+td {
+  border: 1px solid;
+  width: 50px;
+  height: 50px;
+  padding: .5px;
+  background-color: skyblue;
+  display: table-cell;
+  align-items: center;
+  cursor: pointer;
+}
+
+td:hover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+}
+</style>
+
