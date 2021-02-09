@@ -51,6 +51,8 @@
                     yyy=0;
                     xd=0;
                     yd=0;
+                    xxd=0;
+                    yyd=0;
                     for(let x=0;x<3;x++){
                         if(arr[x][Y]==0 ){
                             xx=xx+1;
@@ -72,6 +74,14 @@
                                     yd=yd+1;
                                 }    
                             }
+                            if(x+y==2){
+                                if(arr[x][y]==0){
+                                    xxd=xxd+1;
+                                }
+                                if(arr[x][y]==1){
+                                    yyd=yyd+1;
+                                } 
+                            }
                         }
                     }
 
@@ -92,12 +102,12 @@
                             yd=yd+1;
                         }}
                     }
-                    if(xx==3 || yy==3 || xd==3){
+                    if(xx==3 || yy==3 || xd==3 || xxd==3){
                         console.log("xx=",xx,"yy=",yy);
                         alert("Person 1 is Winner");
                         location.reload();
                     }
-                    if(xxx==3 || yyy==3 || yd==3){
+                    if(xxx==3 || yyy==3 || yd==3 || yyd==3){
                         console.log("xx=",xx,"yy=",yy);
                         alert("Person 2 is Winner");
                         location.reload();
